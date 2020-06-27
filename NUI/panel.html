@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+		<!--
+		<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+-->
+		<script src="panel.js" type="text/javascript"></script>
+        <title>Badger Server List</title>
+        <link rel="stylesheet" href="panel.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+	</head>
+	<body>
+		<div class="container" id="wrap">
+			<div class="container-box">
+				<div id="contain">
+					<div class="container-head">
+						<h1 id="serverName"></h1>
+						<h3 id="playerCount"></h3>
+						<h4 id="page"></h4>
+					</div>
+					<table class="container-contents-l">
+						<tr>
+							<th>Discord Avatar</th> <!-- Discord Pic -->
+							<th>Discord Name</th>
+							<th>Name</th>
+							<th>Server ID</th>
+							<th>Ping</th>
+						</tr>
+						<tbody id="leftCol">
+						</tbody>
+					</table>
+					<table class="container-contents-r">
+						<tr>
+							<th>Discord Avatar</th> <!-- Discord Pic -->
+							<th>Discord Name</th>
+							<th>Name</th>
+							<th>Server ID</th>
+							<th>Ping</th>
+						</tr>
+						<tbody id="rightCol">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
