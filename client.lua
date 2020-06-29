@@ -15,6 +15,7 @@ count = 0;
 function mod(a, b)
     return a - (math.floor(a/b)*b)
 end
+
 curCount = 0;
 Citizen.CreateThread(function()
 	local key = 27;
@@ -32,7 +33,14 @@ Citizen.CreateThread(function()
 					maxCount = maxCount + 1;
 				end
 				local counter = 0;
-				for id, ava in pairs(avatarss) do
+				local keys = {}
+				for key, ava in pairs(avatarss) do 
+					table.insert(keys, tonumber(key));
+				end
+				table.sort(keys);
+				for key = 1, #keys do
+					local id = tostring(keys[key]);
+					local ava = avatarss[id];
 					if (count < (pageSize * pageCount) and counter >= curCount) then 
 						if (pingss[id] ~= nil and playerNames[id] ~= nil and discordNames[id] ~= nil) then 
 							if col then 
