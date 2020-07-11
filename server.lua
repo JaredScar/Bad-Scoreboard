@@ -2,8 +2,7 @@
 --- Bad-ServerList ---
 ----------------------
 --- CONFIG ---
-token = Config.BotToken;
-guildID = Config.GuildID;
+BotToken = ''-- Add discord bot token here
 
 
 
@@ -12,7 +11,7 @@ function DiscordRequest(method, endpoint, jsondata)
     local data = nil
     PerformHttpRequest("https://discordapp.com/api/"..endpoint, function(errorCode, resultData, resultHeaders)
         data = {data=resultData, code=errorCode, headers=resultHeaders}
-    end, method, #jsondata > 0 and json.encode(jsondata) or "", {["Content-Type"] = "application/json", ["Authorization"] = "Bot " .. token})
+    end, method, #jsondata > 0 and json.encode(jsondata) or "", {["Content-Type"] = "application/json", ["Authorization"] = "Bot " .. BotToken})
 
     while data == nil do
         Citizen.Wait(0)
