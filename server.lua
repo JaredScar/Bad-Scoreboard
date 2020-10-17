@@ -1,24 +1,10 @@
 ----------------------
 --- Bad-ServerList ---
 ----------------------
---- CONFIG ---
-BotToken = ''-- Add discord bot token here
 
 
 
 --- CODE ---
-function DiscordRequest(method, endpoint, jsondata)
-    local data = nil
-    PerformHttpRequest("https://discordapp.com/api/"..endpoint, function(errorCode, resultData, resultHeaders)
-        data = {data=resultData, code=errorCode, headers=resultHeaders}
-    end, method, #jsondata > 0 and json.encode(jsondata) or "", {["Content-Type"] = "application/json", ["Authorization"] = "Bot " .. BotToken})
-
-    while data == nil do
-        Citizen.Wait(0)
-    end
-    
-    return data
-end
 avatars = {}
 discordNames = {}
 RegisterNetEvent('Bad-ServerList:SetupImg')
@@ -99,62 +85,10 @@ end)
 
 
 function GetAvatar(user) 
-    local discordId = nil
-    local imgURL = nil;
-    for _, id in ipairs(GetPlayerIdentifiers(user)) do
-        if string.match(id, "discord:") then
-            discordId = string.gsub(id, "discord:", "")
-            print("Found discord id: "..discordId)
-            break
-        end
-    end
-    if discordId then 
-        local endpoint = ("users/%s"):format(discordId)
-        local member = DiscordRequest("GET", endpoint, {})
-        if member.code == 200 then
-            local data = json.decode(member.data)
-            if data ~= nil and data.avatar ~= nil then 
-                -- It is valid data 
-                --print("The data for User " .. GetPlayerName(user) .. " is: ");
-                --print(data.avatar);
-                if (data.avatar:sub(1, 1) and data.avatar:sub(2, 2) == "_") then 
-                    --print("IMG URL: " .. "https://cdn.discordapp.com/avatars/" .. discordId .. "/" .. data.avatar .. ".gif")
-                    imgURL = "https://cdn.discordapp.com/avatars/" .. discordId .. "/" .. data.avatar .. ".gif";
-                else 
-                    --print("IMG URL: " .. "https://cdn.discordapp.com/avatars/" .. discordId .. "/" .. data.avatar .. ".png")
-                    imgURL = "https://cdn.discordapp.com/avatars/" .. discordId .. "/" .. data.avatar .. ".png"
-                end
-                --print("---")
-            end
-        end
-    end
-    return imgURL;
+    return exports.Badger_Discord_API:GetDiscordAvatar(user);
 end
 function GetDiscordName(user) 
-    local discordId = nil
-    local nameData = nil;
-    for _, id in ipairs(GetPlayerIdentifiers(user)) do
-        if string.match(id, "discord:") then
-            discordId = string.gsub(id, "discord:", "")
-            print("Found discord id: "..discordId)
-            break
-        end
-    end
-    if discordId then 
-        local endpoint = ("users/%s"):format(discordId)
-        local member = DiscordRequest("GET", endpoint, {})
-        if member.code == 200 then
-            local data = json.decode(member.data)
-            if data ~= nil then 
-                -- It is valid data 
-                --print("The data for User " .. GetPlayerName(user) .. " is: ");
-                --print(data.avatar);
-                nameData = data.username .. "#" .. data.discriminator;
-                --print("---")
-            end
-        end
-    end
-    return nameData;
+    return exports.Badger_Discord_API:GetDiscordName(user);
 end
 
 function ExtractIdentifiers(src)
