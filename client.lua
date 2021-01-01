@@ -48,8 +48,8 @@ Citizen.CreateThread(function()
 								col = false;
 								left = left .. '<tr class="player-box">' ..
 							'<td><img src="' .. ava .. '" /></td>' ..
-							'<td>' .. discordNames[id] .. '</td>' ..
-							"<td>" .. playerNames[id] .. "</td>" .. 
+							'<td>' .. discordNames[id]:gsub("<", ""):gsub(">", "") .. '</td>' ..
+							"<td>" .. playerNames[id]:gsub("<", ""):gsub(">", "") .. "</td>" .. 
 							"<td>" .. id .. "</td>" ..
 							"<td>" .. pingss[id] .. " ms</td>" ..
 							"</tr>";
@@ -58,8 +58,8 @@ Citizen.CreateThread(function()
 								col = true;
 								right = right .. '<tr class="player-box">' ..
 							'<td><img src="' .. ava .. '" /></td>' ..
-							'<td>' .. discordNames[id] .. '</td>' ..
-							"<td>" .. playerNames[id] .. "</td>" .. 
+							'<td>' .. discordNames[id]:gsub("<", ""):gsub(">", "") .. '</td>' ..
+							"<td>" .. playerNames[id]:gsub("<", ""):gsub(">", "") .. "</td>" .. 
 							"<td>" .. id .. "</td>" ..
 							"<td>" .. pingss[id] .. " ms</td>" ..
 							"</tr>";
