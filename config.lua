@@ -6,4 +6,5 @@ Config = {
 	Discord_Not_Found = "Not Found", -- This will display under 'Discord Name' column if their name is not found 
 	ServerName = "Badger's Test Server",
 	PageSize = 10,
+	KeyCode = 27,
 }

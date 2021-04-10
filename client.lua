@@ -18,7 +18,7 @@ end
 
 curCount = 0;
 Citizen.CreateThread(function()
-	local key = 27;
+	local key = Config.KeyCode;
 	nui = false;
 	local col = true;
 	while true do 
@@ -86,7 +86,7 @@ Citizen.CreateThread(function()
 				end
 				if (count >= (pageSize * pageCount)) then 
 					pageCount = pageCount + 1;
-					curCount = (pageSize * pageCount) - 10;
+					curCount = (pageSize * pageCount) - pageSize;
 					col = true;
 				end
 				SendNUIMessage({
