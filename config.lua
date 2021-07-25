@@ -7,4 +7,5 @@ Config = {
 	ServerName = "Badger's Test Server",
 	PageSize = 10,
 	KeyCode = 27,
+	MaxPlayers = 1024,
 }
