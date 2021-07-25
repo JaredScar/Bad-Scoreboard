@@ -65,7 +65,6 @@ Citizen.CreateThread(function()
 							"</tr>";
 							end
 							count = count + 1;
-							print("Count is now: " .. count)
 						end
 					end 
 					counter = counter + 1;
@@ -78,7 +77,6 @@ Citizen.CreateThread(function()
 								serverName = Config.ServerName
 							})
 				if (count >= maxCount) then 
-					print("Count is=" .. count .. " and maxCount=" .. maxCount)
 					count = 0;
 					pageCount = 1;
 					col = true;
