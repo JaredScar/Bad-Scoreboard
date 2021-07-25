@@ -72,7 +72,7 @@ Citizen.CreateThread(function()
 				SendNUIMessage({
 								addRowLeft = left,
 								addRowRight = right,
-								playerCount = maxCount .. " / " .. "64",
+								playerCount = maxCount .. " / " .. Config.MaxPlayers,
 								page = "Page " .. pageCount,
 								serverName = Config.ServerName
 							})
